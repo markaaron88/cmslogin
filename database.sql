@@ -2,45 +2,51 @@
 -- M. Mariscal, C. Piwarski, W. Robleh
 -- 23 January 2019
 
+
+-- create database and tables
+
 DROP DATABASE IF EXISTS cms;
 CREATE DATABASE cms;
 
 USE cms;
 
-CREATE TABLE User Levels (
-    account_level   int PRIMARY KEY AUTO_INCREMENT,
-    Level_name (student, teacher, admin) VARCHAR(75) NOT NULL,
-    Grade_access    VARCHAR(25) NOT NULL,
+CREATE TABLE User_levels (
+    account_level INT PRIMARY KEY AUTO_INCREMENT,
+    level_name VARCHAR(75) NOT NULL,
+    grade_access VARCHAR(25) NOT NULL,
 );
 
 CREATE TABLE Accounts (
-    user_id int PRIMARY KEY AUTO_INCREMENT,
-    user_name  varchar(50) NOT NULL,
-    password     varchar(50) NOT NULL,
-    user_level   varchar(50) FOREIGN KEY,
-    Class   INT FOREIGN KEY
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_name VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    user_level INT NOT NULL,
+    class_id INT NOT NULL,
+    CONSTRAINT user_level_fk FOREIGN KEY (user_level) REFERENCES user_levels (account_level)
 );
 
 
 CREATE TABLE Grades (
-Student_id  PRIMARY KEY
-Grades int,
-    Grade varchar(50),
-Grade Percentage int(50),
-    GPA  float(50),
-    User_id FOREIGN KEY
-         
+    grade_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    grades INT,
+    grade VARCHAR(50),
+    grade_percentage INT(50),
+    CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES Accounts (user_id)
 );
 
 
 CREATE TABLE Classes (
-class_id int PRIMARY KEY AUTO_INCREMENT,
-Class_Name var(50),
-Class_Time int(50),
-Classroom_Number int(50),
-Teacher_Name varchar(50),
-Start_date  DATE    NOT NULL,
-End_date    DATE    NOT NULL,
-Teacher_id  int FOREIGN KEY
-Class_Units int(50) 
+    class_id INT PRIMARY KEY AUTO_INCREMENT,
+    class_name VARCHAR(50),
+    class_time INT(50),
+    classroom_number INT(50),
+    teacher_name VARCHAR(50),
+    teacher_id INT NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    class_Units DECIMAL(3,2)
+    CONSTRAINT teacher_id_fk FOREIGN KEY (teacher_id) REFERENCES Accounts (user_id)
 );
+
+-- insert data
