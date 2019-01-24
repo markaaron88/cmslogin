@@ -19,9 +19,9 @@ CREATE TABLE user_levels (
 CREATE TABLE accounts (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    user_password VARCHAR(50) NOT NULL,
     user_level INT NOT NULL,
-    class_id INT NOT NULL,
+    class_id INT,
     CONSTRAINT user_level_fk FOREIGN KEY (user_level) REFERENCES user_levels (account_level)
 );
 
@@ -37,14 +37,51 @@ CREATE TABLE grades (
 CREATE TABLE classes (
     class_id INT PRIMARY KEY AUTO_INCREMENT,
     class_name VARCHAR(50),
-    class_time INT(50),
+    class_time DECIMAL (4,2),
     classroom_number INT(50),
-    teacher_name VARCHAR(50),
-    teacher_id INT NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    class_Units DECIMAL(3,2),
-    CONSTRAINT teacher_id_fk FOREIGN KEY (teacher_id) REFERENCES accounts (user_id)
+    class_units DECIMAL(3,2)
 );
 
 -- insert data
+
+-- create user levels
+INSERT INTO user_levels
+    (level_name, grade_access)
+VALUES
+    ("student", "No");
+    
+INSERT INTO user_levels
+    (level_name, grade_access)
+VALUES
+    ("teacher", "Yes");
+    
+INSERT INTO user_levels
+    (level_name, grade_access)
+VALUES
+    ("administrator", "No");
+    
+-- create classes
+INSERT INTO classes
+    (class_name, class_time, classroom_number, start_date, end_date, class_units)
+VALUES
+    ("History", 13.50, 7, "2019-01-05", "2019-4-25", 4.5);
+    
+INSERT INTO classes
+    (class_name, class_time, classroom_number, start_date, end_date, class_units)
+VALUES
+    ("English", 9.50, 3, "2019-01-05", "2019-4-25", 5.0);
+    
+-- create administrator
+INSERT INTO accounts
+    (user_name, user_password, user_level)
+VALUES
+    ("admin", "admin", 3);
+    
+-- create teachers
+
+-- create students
+    
+    
+    
