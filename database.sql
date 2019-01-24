@@ -39,12 +39,10 @@ CREATE TABLE accounts (
 CREATE TABLE grades (
     grade_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
-    grades INT,
     grade VARCHAR(50),
-    grade_percentage INT(50),
+    grade_percentage DECIMAL(4, 2),
     CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES accounts (user_id)
 );
-
 
 -- insert data
 
@@ -64,6 +62,7 @@ INSERT INTO user_levels
 VALUES
     ("administrator", "No");
     
+    
 -- create classes
 INSERT INTO classes
     (class_name, class_time, classroom_number, start_date, end_date, class_units)
@@ -80,11 +79,13 @@ INSERT INTO classes
 VALUES
     ("Databases", 9.50, 1, "2019-01-05", "2019-4-25", 4.5);
     
+    
 -- create administrator
 INSERT INTO accounts
     (user_name, user_password, user_level)
 VALUES
     ("admin", "admin", 3);
+    
     
 -- create teachers
 INSERT INTO accounts
@@ -101,6 +102,7 @@ INSERT INTO accounts
     (user_name, user_password, user_level, class_id)
 VALUES
     ("teacher3", "teacher3", 2, 3);
+    
 
 -- create students
 INSERT INTO accounts
@@ -179,3 +181,82 @@ VALUES
     ("student15", "student15", 1, 3);
     
     
+-- insert grades
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (5, "A", 95.38);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (6, "A+", 99.30);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (7, "B-", 82.61);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (8, "F", 47.99);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (9, "C", 76.11);
+
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (10, "B+", 88.74);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (11, "A", 94.00);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (12, "B", 86.12);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (13, "C+", 78.87);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (14, "C", 77.00);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (15, "B-", 82.22);
+
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (16, "A", 95.01);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (17, "A", 94.50);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (18, "B+", 88.42);
+    
+INSERT INTO grades
+    (user_id, grade, grade_percentage)
+VALUES
+    (19, "B+", 89.00);
+
+
+
