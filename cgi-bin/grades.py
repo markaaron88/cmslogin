@@ -11,16 +11,14 @@ cgitb.enable()
 
 cgitb.enable()
 form = cgi.FieldStorage()
-username = form['login'].value
 
 # HTML Header
-print('Content-Type: text/html')
-print()
-print('<html><title>GRADES</title>><body>')
+username = form.getvalue('userid')
+password = form.getvalue('password')
 
 try:
     cnx = mysql.connector.connect(user='root',
-                                password='TINYtinytiny0000',
+                                password='root',
                                 database='cms',
                                 host='127.0.0.1')
     cursor1 = cnx.cursor()
