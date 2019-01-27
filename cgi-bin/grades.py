@@ -9,12 +9,18 @@ import cgitb, cgi
 import mysql.connector
 cgitb.enable()
 
-cgitb.enable()
 form = cgi.FieldStorage()
 
 # HTML Header
 username = form.getvalue('userid')
 password = form.getvalue('password')
+
+# HTML Header
+print("Content-Type: text/html")
+print()
+print("<html>")
+print(username)
+print(password)
 
 try:
     cnx = mysql.connector.connect(user='root',
