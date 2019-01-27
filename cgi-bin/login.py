@@ -16,11 +16,11 @@ clear = False
 error = False
 
 if "login" in form:
-	login = True
+        login = True
 elif "clear" in form:
-	clear = True
+        clear = True
 else:
-	error = True
+        error = True
 
 print("Content-Type: text/html")    # HTML is following
 print()                             # blank line required, end of headers
@@ -43,9 +43,9 @@ cursor1.execute(ul_query)
 result = cursor1.fetchone()
 currentpage = os.path.join(os.getcwd(),student.html)
 page = urlib.request.urlopen(currentpage).read()
-	
+
 if login:
-	if result is None:
+        if result is None:
                 # user does not exist. Prompt user to register
                 print('Userid does not exist.</p><br>')
                 print('Click back and register.')
@@ -53,7 +53,7 @@ if login:
                 print('</p><br>')
                 print(page)
                 print ('Welcome,', username)
-	else:
+        else:
                 print('Incorrect password for user: ', username)
 print("</body></html>")
 cnx.commit()    # IMPORTANT. Must commit 
