@@ -24,7 +24,7 @@ else:
 
 print("Content-Type: text/html")    # HTML is following
 print()                             # blank line required, end of headers
-print("<html><body><p>")
+print("<html>")
 
 
 # connect to database
@@ -46,12 +46,19 @@ result = cursor1.fetchone()
 if login:
         if result is None:
                 # user does not exist. Prompt user to register
+                print("<body><p>")
                 print('Userid does not exist.</p><br>')
                 print('Click back and register.')
         elif result[1] == password:
+                print("<head>")
+                print("<meta http-equiv=\"refresh\" content=\"0;url=student.html\" /> ")
+                print("</head>")
+                print("<body><p>")
                 print('</p><br>')
-                print ('Welcome,', username)
+                print('Welcome,', username)
+                print('reDirecting')
         else:
+                print("<body><p>")
                 print('Incorrect password for user: ', username)
 print("</body></html>")
 cnx.commit()    # IMPORTANT. Must commit 
