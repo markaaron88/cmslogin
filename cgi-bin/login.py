@@ -7,8 +7,8 @@ import urllib
 cgitb.enable()
 
 form = cgi.FieldStorage()
-username = form['user_name'].value
-password = form['user_password'].value
+username = form['userid'].value
+password = form['password'].value
 
 #Check to see if user is login, clear or error
 login = False
