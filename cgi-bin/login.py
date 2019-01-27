@@ -41,8 +41,7 @@ ul_query = 'SELECT user_level FROM accounts'
 
 cursor1.execute(ul_query)
 result = cursor1.fetchone()
-currentpage = os.path.join(os.getcwd(),student.html)
-page = urlib.request.urlopen(currentpage).read()
+
 
 if login:
         if result is None:
@@ -51,7 +50,6 @@ if login:
                 print('Click back and register.')
         elif result[2] == password:
                 print('</p><br>')
-                print(page)
                 print ('Welcome,', username)
         else:
                 print('Incorrect password for user: ', username)
