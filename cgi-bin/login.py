@@ -51,8 +51,9 @@ if login:
                 print('Click back and register.')
         elif result[1] == password:
                 print("<head>")
-                print("<meta http-equiv=\"refresh\" content=\"0;url=student.html\" /> ")
+                print("<meta http-equiv=\"refresh\" content=\"0;url=http://127.0.0.1:9000/student.html\" /> ")
                 print("</head>")
+                print("<title>You are about to be redirected</title>")
                 print("<body><p>")
                 print('</p><br>')
                 print('Welcome,', username)
