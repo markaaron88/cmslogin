@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 import cgitb, cgi
 import mysql.connector
 import os
@@ -48,7 +49,7 @@ if login:
                 # user does not exist. Prompt user to register
                 print('Userid does not exist.</p><br>')
                 print('Click back and register.')
-        elif result[2] == password:        
+        elif result[2] == password:
                 print('</p><br>')
                 print(page)
                 print ('Welcome,', username)
