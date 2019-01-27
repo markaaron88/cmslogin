@@ -37,7 +37,7 @@ cnx = mysql.connector.connect(user='root',
 cursor1 = cnx.cursor()  # Creates a cursor object, which is used to execute a MySQL query
 
 # determine user level 
-ul_query = 'SELECT user_name, user_password FROM accounts WHERE user_name = %s' % username
+ul_query = 'SELECT user_name, user_password FROM accounts WHERE user_name = \'%s\'' % username
 
 cursor1.execute(ul_query)
 result = cursor1.fetchone()
@@ -48,7 +48,7 @@ if login:
                 # user does not exist. Prompt user to register
                 print('Userid does not exist.</p><br>')
                 print('Click back and register.')
-        elif result[2] == password:
+        elif result[1] == password:
                 print('</p><br>')
                 print ('Welcome,', username)
         else:
