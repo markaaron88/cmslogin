@@ -37,7 +37,7 @@ cnx = mysql.connector.connect(user='root',
 cursor1 = cnx.cursor()  # Creates a cursor object, which is used to execute a MySQL query
 
 # determine user level 
-ul_query = 'SELECT user_name, user_password FROM accounts WHERE user_name = username'
+ul_query = 'SELECT user_name, user_password FROM accounts WHERE user_name = %s' % username
 
 cursor1.execute(ul_query)
 result = cursor1.fetchone()
