@@ -88,7 +88,7 @@ else:
 
 print('<br>')
 print('</table>')
-print('<a href="/login.py">Back Button</a><br/>')
+print('Please hit back on your browser to return to the main menu')
 print('</body></html>')
 cnx.commit()
 cnx.close()

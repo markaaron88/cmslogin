@@ -46,9 +46,9 @@ student_query = 'SELECT a.user_name, c.class_name \
 FROM accounts a JOIN classes c ON a.class_id = c.class_id \
 WHERE user_name = %s;'
 
-teacher_query = 'SELECT a.user_name, c.class_name,  \
+teacher_query = 'SELECT a.user_name, c.class_name  \
 FROM accounts a JOIN classes c ON a.class_id = c.class_id \
-WHERE class_id = (SELECT class_id FROM accounts WHERE user_name = %s);'
+WHERE c.class_id = (SELECT class_id FROM accounts WHERE user_name = %s);'
 
 # determine user level 
 ul_query = 'SELECT user_level FROM accounts WHERE user_name = \'%s\'' % username
@@ -77,7 +77,7 @@ else:
 
 print('<br>')
 print('</table>')
-print('<a href="/loggedin.py">Back Button</a><br/>')
+print('Please hit back on your browser to return to the main menu')
 print('</body></html>')
 cnx.commit()
 cnx.close()
