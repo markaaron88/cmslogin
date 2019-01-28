@@ -42,16 +42,16 @@ except mysql.connector.Error as err:
     raise SystemExit
     print("ERROR", err)
 
-student_query = 'SELECT a.user_name, classes, \
-FROM accounts a JOIN classes c ON a.user_id = g.user_id \
+student_query = 'SELECT a.user_name, c.class_name \
+FROM accounts a JOIN classes c ON a.class_id = c.class_id \
 WHERE user_name = %s;'
 
-teacher_query = 'SELECT a.user_name, classes,  \
-FROM accounts a JOIN classes c ON a.user_id = g.user_id \
+teacher_query = 'SELECT a.user_name, c.class_name,  \
+FROM accounts a JOIN classes c ON a.class_id = c.class_id \
 WHERE class_id = (SELECT class_id FROM accounts WHERE user_name = %s);'
 
 # determine user level 
-ul_query = 'SELECT user_level FROM accounts WHERE user_name = \'%s\'' %username
+ul_query = 'SELECT user_level FROM accounts WHERE user_name = \'%s\'' % username
 
 cursor1.execute(ul_query)
 fetch = cursor1.fetchone()
@@ -59,21 +59,19 @@ test = str(fetch)
 result = find_between(test,"(",",")
 
 
-
-print('<table border="1"><tr><th>Student Name</th><th>Classes</th><th>')
+print('Here is your class:')
+print('<table border="1"><tr><th>Student Name</th><th>Classes</th></tr>')
 
 if result == "1":
     cursor2.execute(student_query, (username,))
-    print('Here is your classes:')
-    grade = cursor2.fetchone()
-    print ('<tr><td>%s <td>%s <td>%s </tr>' % classes)
+    classes = cursor2.fetchone()
+    print ('<tr><td>%s <td>%s</tr>' % classes)
 elif result == "2":
     cursor2.execute(teacher_query, (username,))
-    print("These are your student's classes:")
-    grades = cursor2.fetchone()
-    while grades is not None:
-        print ('<tr><td>%s <td>%s <td>%s </tr>' % classes)
-        grades = cursor2.fetchone()
+    classes = cursor2.fetchone()
+    while classes is not None:
+        print ('<tr><td>%s <td>%s</tr>' % classes)
+        classes = cursor2.fetchone()
 else:
     print('Sorry, you do not have access to view classes')
 
