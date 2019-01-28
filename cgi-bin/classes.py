@@ -78,6 +78,7 @@ else:
 print('<br>')
 print('</table>')
 print('Please hit back on your browser to return to the main menu')
+print('<a href="http://127.0.0.1:9000/portal.html">Back Button</a><br/>')
 print('</body></html>')
 cnx.commit()
 cnx.close()
