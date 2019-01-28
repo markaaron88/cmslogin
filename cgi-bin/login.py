@@ -67,14 +67,6 @@ if login:
         else:
                 print("<body><p>")
                 print('Incorrect password for user: ', username)
-elif clear:
-        print("<head>")
-        print("<meta http-equiv=\"refresh\" content=\"0;url=http://127.0.0.1:9000/cms.html\" /> ")
-        print("</head>")
-        print("<title>You are about to be redirected</title>")
-        print("<body><p>")
-        print('</p><br>')
-         print('reDirecting')
 print("</body></html>")
 cnx.commit()    # IMPORTANT. Must commit 
 cnx.close() # close the connection
