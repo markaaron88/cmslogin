@@ -59,19 +59,23 @@ FROM accounts a JOIN grades g ON a.user_id = g.user_id \
 WHERE class_id = (SELECT class_id FROM accounts WHERE user_name = %s);'
 
 # determine user level 
-ul_query = 'SELECT user_level FROM accounts'
+ul_query = 'SELECT user_level FROM accounts WHERE user_name = \'%s\'' %username
 
 cursor1.execute(ul_query)
-result = cursor.fetchone()
+fetch = cursor1.fetchone()
+test = str(fetch)
+result = find_between(test,"(",",")
 
 print('<table border="1"><tr><th>Student Name</th><th>Letter Grade</th><th>Percentage</th></tr>')
 
-if result == 1:
+print(result)
+
+if result == "1":
     cursor2.execute(student_query, (username,))
     print('Here is your grade:')
     grade = cursor2.fetchone()
     print ('<tr><td>%s <td>%s <td>%s </tr>' % grade)
-elif result == 2:
+elif result == "2":
     cursor2.execute(teacher_query, (username,))
     print("These are your student's grades:")
     grades = cursor2.fetchone()
