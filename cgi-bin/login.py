@@ -10,6 +10,12 @@ form = cgi.FieldStorage()
 username = form['userid'].value
 password = form['password'].value
 
+print("Set-Cookie:username = %s" % username)
+print("Set-Cookie:password = %s" % password)
+#print("Set-Cookie:Expires = Tuesday, 31-January-2019 23:12:40 GMT\";\r\n")
+#print("Set-Cookie:Domain = 127.0.0.1/9000;\r\n")
+#print("Set-Cookie:Path = /perl;\n")
+#print("Content-type:text/html\r\n\r\n")
 #Check to see if user is login, clear or error
 login = False
 clear = False
