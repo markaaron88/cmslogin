@@ -66,17 +66,15 @@ fetch = cursor1.fetchone()
 test = str(fetch)
 result = find_between(test,"(",",")
 
-print('<table border="1"><tr><th>Student Name</th><th>Letter Grade</th><th>Percentage</th></tr>')
-
-print(result)
-
 if result == "1":
     cursor2.execute(student_query, (username,))
+    print('<table border="1"><tr><th>Student Name</th><th>Letter Grade</th><th>Percentage</th></tr>')
     print('Here is your grade:')
     grade = cursor2.fetchone()
     print ('<tr><td>%s <td>%s <td>%s </tr>' % grade)
 elif result == "2":
     cursor2.execute(teacher_query, (username,))
+    print('<table border="1"><tr><th>Student Name</th><th>Letter Grade</th><th>Percentage</th></tr>')
     print("These are your student's grades:")
     grades = cursor2.fetchone()
     while grades is not None:
@@ -88,7 +86,6 @@ else:
 
 print('<br>')
 print('</table>')
-print('Please hit back on your browser to return to the main menu')
 print('<a href="http://127.0.0.1:9000/portal.html">Back Button</a><br/>')
 print('</body></html>')
 cnx.commit()

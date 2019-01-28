@@ -42,11 +42,11 @@ except mysql.connector.Error as err:
     raise SystemExit
     print("ERROR", err)
 
-student_query = 'SELECT a.user_name, c.class_name \
+student_query = 'SELECT a.user_name, c.class_name, c.classroom_number \
 FROM accounts a JOIN classes c ON a.class_id = c.class_id \
 WHERE user_name = %s;'
 
-teacher_query = 'SELECT a.user_name, c.class_name  \
+teacher_query = 'SELECT a.user_name, c.class_name, c.classroom_number  \
 FROM accounts a JOIN classes c ON a.class_id = c.class_id \
 WHERE c.class_id = (SELECT class_id FROM accounts WHERE user_name = %s);'
 
@@ -58,26 +58,25 @@ fetch = cursor1.fetchone()
 test = str(fetch)
 result = find_between(test,"(",",")
 
-
-print('Here is your class:')
-print('<table border="1"><tr><th>Student Name</th><th>Classes</th></tr>')
-
 if result == "1":
+    print('Here is your class:')
+    print('<table border="1"><tr><th>Student Name</th><th>Course</th><th>Room Number</th></tr>')
     cursor2.execute(student_query, (username,))
     classes = cursor2.fetchone()
-    print ('<tr><td>%s <td>%s</tr>' % classes)
+    print ('<tr><td>%s <td>%s <td>%s </tr>' % classes)
 elif result == "2":
+    print('Here is your class:')
+    print('<table border="1"><tr><th>Teacher Name</th><th>Course</th><th>Room Number</th></tr>')
     cursor2.execute(teacher_query, (username,))
     classes = cursor2.fetchone()
     while classes is not None:
-        print ('<tr><td>%s <td>%s</tr>' % classes)
+        print ('<tr><td>%s <td>%s <td>%s </tr>' % classes)
         classes = cursor2.fetchone()
 else:
     print('Sorry, you do not have access to view classes')
 
 print('<br>')
 print('</table>')
-print('Please hit back on your browser to return to the main menu')
 print('<a href="http://127.0.0.1:9000/portal.html">Back Button</a><br/>')
 print('</body></html>')
 cnx.commit()

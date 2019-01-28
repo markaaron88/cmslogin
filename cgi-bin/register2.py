@@ -12,8 +12,6 @@ cgitb.enable()
 
 form = cgi.FieldStorage()
 
-cookies = environ['HTTP_Cookie']
-
 new_user = form['new_userid'].value
 new_psswd = form['new_password'].value
 new_user_level = form['new_user_level'].value
@@ -23,7 +21,6 @@ new_user_class = form['new_user_class'].value
 print('Content-Type: text/html')
 print()
 print('<html><title>REGISTRATION</title><body>')
-print(new_user, new_psswd, new_user_level, new_user_class)
 
 try:
     cnx = mysql.connector.connect(user='root',
@@ -38,7 +35,7 @@ except mysql.connector.Error as err:
     print("ERROR", err)
 
 # determine if user is already in the database
-qsql = 'SELECT user_name FROM accounts'
+qsql = 'SELECT user_name FROM accounts WHERE user_name = %s;'
 
 cursor1.execute(qsql, (new_user,))
 result = cursor1.fetchone() 
@@ -47,7 +44,7 @@ if result is None:
     insert_sql = 'INSERT INTO accounts (user_name, user_password, user_level, class_id) \
     VALUES (%s, %s, %s, %s)'
     cursor2.execute(insert_sql, (new_user, new_psswd, new_user_level, new_user_class))
-    print('New user has been registered.)'
+    print('New user has been registered.')
 else:
     print('User name is already taken')
 
