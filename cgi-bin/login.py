@@ -55,6 +55,7 @@ if login:
                 print("<body><p>")
                 print('Userid does not exist.</p><br>')
                 print('Click back and register.')
+                print('<a href="http://127.0.0.1:9000/cms.html">Back Button</a><br/>')
         elif result[1] == password:
                 print("<head>")
                 print("<meta http-equiv=\"refresh\" content=\"0;url=http://127.0.0.1:9000/portal.html\" /> ")
