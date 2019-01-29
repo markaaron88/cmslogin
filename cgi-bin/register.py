@@ -60,7 +60,8 @@ if result == '3':
     print('</form>')
 else:
     print('Sorry, you do not have the correct privilege level to create user accounts.')
-
+    print('<br>')
+    print('<a href="http://127.0.0.1:9000/portal.html">Back Button</a><br/>')
 print('<br>')
 print('</body></html>')
 cnx.commit()
