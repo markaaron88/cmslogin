@@ -66,7 +66,7 @@ if result == "1":
     print ('<tr><td>%s <td>%s <td>%s </tr>' % classes)
 elif result == "2":
     print('Here is your class:')
-    print('<table border="1"><tr><th>Teacher Name</th><th>Course</th><th>Room Number</th></tr>')
+    print('<table border="1"><tr><th>Course Members</th><th>Course</th><th>Room Number</th></tr>')
     cursor2.execute(teacher_query, (username,))
     classes = cursor2.fetchone()
     while classes is not None:

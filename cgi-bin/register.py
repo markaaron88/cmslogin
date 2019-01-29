@@ -51,7 +51,7 @@ result = find_between(test,"(",",")
 
 if result == '3':
     print('<form action="/cgi-bin/register2.py" method = "post">')
-    print('New Userid: <input type="text" name="new_userid"/> <br/>')
+    print('New Username: <input type="text" name="new_userid"/> <br/>')
     print('New Password: <input type="text" name="new_password" /><br>')
     print('User Level: <input type="text" name="new_user_level" /><br>')
     print('Class: <input type="text" name="new_user_class" />')
