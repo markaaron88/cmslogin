@@ -3,12 +3,19 @@ import cgitb, cgi
 import mysql.connector
 import os
 import urllib
+import sys
 
 cgitb.enable()
-
 form = cgi.FieldStorage()
-username = form['userid'].value
-password = form['password'].value
+if 'userid' not in form:
+        username = None
+else:
+        username = form['userid'].value
+if 'password' not in form:
+        password = None
+else:
+        password = form['password'].value
+
 
 print("Set-Cookie:username = %s" % username)
 print("Set-Cookie:password = %s" % password)
@@ -42,6 +49,10 @@ cnx = mysql.connector.connect(user='root',
 #MYSQL code here
 cursor1 = cnx.cursor()  # Creates a cursor object, which is used to execute a MySQL query
 
+if username == None or password == None:
+        print("<html><head><meta http-equiv=\"Refresh\" content=\"7; url=/cms.html\"/></head>")
+        print("<body><p>Please write a username and or password. <a href=\"/cms.html\">Return to search</a> </p></body></html>")
+        sys.exit()
 # determine user level 
 ul_query = 'SELECT user_name, user_password FROM accounts WHERE user_name = \'%s\'' % username
 
