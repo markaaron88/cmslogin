@@ -68,6 +68,9 @@ if login:
         else:
                 print("<body><p>")
                 print('Incorrect password for user: ', username)
+                print('<br>')
+                print('Click back and use the correct password.')
+                print('<a href="http://127.0.0.1:9000/cms.html">Back Button</a><br/>')
 elif clear:
         print("<head>")
         print("<meta http-equiv=\"refresh\" content=\"0;url=http://127.0.0.1:9000/cms.html\" /> ")
