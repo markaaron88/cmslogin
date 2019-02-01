@@ -42,9 +42,9 @@ except mysql.connector.Error as err:
     print("ERROR", err)
 
 # determine user level 
-ul_query = 'SELECT user_level FROM accounts WHERE user_name = \'%s\'' % username
+ul_query = 'SELECT user_level FROM accounts WHERE user_name = %s'
 
-cursor1.execute(ul_query)
+cursor1.execute(ul_query, (username,))
 fetch = cursor1.fetchone()
 test = str(fetch)
 result = find_between(test,"(",",")

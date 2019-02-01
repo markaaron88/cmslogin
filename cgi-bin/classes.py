@@ -51,9 +51,9 @@ FROM accounts a JOIN classes c ON a.class_id = c.class_id \
 WHERE c.class_id = (SELECT class_id FROM accounts WHERE user_name = %s);'
 
 # determine user level 
-ul_query = 'SELECT user_level FROM accounts WHERE user_name = \'%s\'' % username
+ul_query = 'SELECT user_level FROM accounts WHERE user_name = %s'
 
-cursor1.execute(ul_query)
+cursor1.execute(ul_query, (username,))
 fetch = cursor1.fetchone()
 test = str(fetch)
 result = find_between(test,"(",",")

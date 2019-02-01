@@ -54,9 +54,9 @@ if username == None or password == None:
         print("<body><p>Please write a username and or password. <a href=\"/cms.html\">Return to search</a> </p></body></html>")
         sys.exit()
 # determine user level 
-ul_query = 'SELECT user_name, user_password FROM accounts WHERE user_name = \'%s\'' % username
+ul_query = 'SELECT user_name, user_password FROM accounts WHERE user_name = %s'
 
-cursor1.execute(ul_query)
+cursor1.execute(ul_query, (username,))
 result = cursor1.fetchone()
 
 
