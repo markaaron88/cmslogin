@@ -48,6 +48,8 @@ cnx = mysql.connector.connect(user='root',
 
 #MYSQL code here
 cursor1 = cnx.cursor()  # Creates a cursor object, which is used to execute a MySQL query
+cursor2 = cnx.cursor()
+cursor3 = cnx.cursor()
 
 if username == None or password == None:
         print("<html><head><meta http-equiv=\"Refresh\" content=\"7; url=/cms.html\"/></head>")
@@ -68,6 +70,11 @@ if login:
                 print('Click back and register.')
                 print('<a href="http://127.0.0.1:9000/cms.html">Back Button</a><br/>')
         elif result[1] == password:
+                timestamp_sql = 'INSERT INTO login_times (user_id) VALUES (%s)'
+                userid_sql = 'SELECT user_id FROM accounts WHERE user_name = %s'
+                cursor2.execute(userid_sql, (username,))
+                user_id = cursor2.fetchone()
+                cursor3.execute(timestamp_sql, (user_id[0],))
                 print("<head>")
                 print("<meta http-equiv=\"refresh\" content=\"0;url=http://127.0.0.1:9000/portal.html\" /> ")
                 print("</head>")
