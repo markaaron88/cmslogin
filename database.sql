@@ -45,8 +45,8 @@ CREATE TABLE grades (
 );
 
 CREATE TABLE login_times (
-    user_id INT AUTO_INCREMENT,
-    login_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    login_date DATETIME PRIMARY KEY DEFAULT CURRENT_TIMESTAMP,
+    user_id INT AUTO_INCREMENT
 );
 
 -- insert data
