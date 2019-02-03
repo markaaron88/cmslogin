@@ -262,3 +262,99 @@ INSERT INTO grades
     (user_id, grade, grade_percentage)
 VALUES
     (19, "B+", 89.00);
+
+-- insert some time stamps
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (1);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (2);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (3);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (4);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (5);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (6);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (7);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (8);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (9);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (10);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (11);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (12);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (13);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (14);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (15);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (16);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (17);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (18);
+
+INSERT INTO login_times
+    (user_id)
+VALUES
+    (19);
