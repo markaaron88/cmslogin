@@ -44,6 +44,11 @@ CREATE TABLE grades (
     CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES accounts (user_id)
 );
 
+CREATE TABLE login_times (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    login_date DATE NOT NULL   
+);
+
 -- insert data
 
 -- create user levels
@@ -257,6 +262,3 @@ INSERT INTO grades
     (user_id, grade, grade_percentage)
 VALUES
     (19, "B+", 89.00);
-
-
-
