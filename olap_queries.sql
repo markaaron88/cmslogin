@@ -33,3 +33,8 @@ INNER JOIN cms.classes c
     ON a.class_id = c.class_id
 GROUP BY class_name
 
+-- What is the most popular class? 
+SELECT class_name, count(*) AS 'Number of Students'
+FROM cms.accounts a INNER JOIN cms.classes c
+    ON a.class_id = c.class_id
+GROUP BY class_name
