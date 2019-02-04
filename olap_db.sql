@@ -38,3 +38,14 @@ CREATE TABLE logins (
     user_level INT NOT NULL,
     class_id INT
 );
+
+CREATE OR REPLACE VIEW student_number_of_logins AS
+    SELECT l.user_id, ua.user_name, 
+    class_name, 
+    COUNT(*) AS "logins today" 
+  FROM logins l JOIN classes c 
+    ON l.class_id = c.class_id 
+  JOIN user_account ua 
+    ON l.user_id = ua.user_id 
+  GROUP BY user_id;
+
