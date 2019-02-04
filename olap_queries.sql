@@ -17,7 +17,7 @@ GROUP BY user_name;
 SELECT class_id, COUNT(*) FROM logins GROUP BY class_id;
 
 -- What class is the average grade of each class?
-SELECT class_name,  COUNT(*) AS 'Students', 
+SELECT class_name AS 'Class',  COUNT(*) AS 'Students', 
 ROUND(AVG(
 CASE
     WHEN grade = 'A' THEN 4.0
@@ -25,11 +25,11 @@ CASE
     WHEN grade = 'C' THEN 2.0
     WHEN grade = 'D' THEN 1.0
     ELSE 0.0 
-END),1) AS 'AverageSchoolGrade'
+END),1) AS 'AverageClassGrade'
 FROM
 cms.grades g INNER JOIN cms.accounts a
     ON g.user_id = a.user_id
 INNER JOIN cms.classes c
     ON a.class_id = c.class_id
-Group By class_name
+GROUP BY class_name
 
