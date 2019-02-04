@@ -42,7 +42,7 @@ CREATE TABLE logins (
 CREATE OR REPLACE VIEW student_number_of_logins AS
     SELECT l.user_id, ua.user_name, 
     class_name, 
-    COUNT(*) AS "logins today" 
+    COUNT(*) AS "Times Logged In" 
   FROM logins l JOIN classes c 
     ON l.class_id = c.class_id 
   JOIN user_account ua 
